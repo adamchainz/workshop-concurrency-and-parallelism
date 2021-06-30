@@ -3,16 +3,16 @@ from __future__ import annotations
 import argparse
 import time
 from multiprocessing import Process, Queue
-from socket import socket, AF_INET, SOCK_STREAM
+from socket import AF_INET, SOCK_STREAM, socket
 
 
-def main(args=None) -> int:
+def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("host")
     parser.add_argument("min_port", type=int)
     parser.add_argument("max_port", type=int)
     parser.add_argument("--timeout", type=float, default=1.0)
-    args = parser.parse_args(args)
+    args = parser.parse_args(argv)
     if args.max_port < args.min_port:
         parser.error("max_port should be greater than or equal to min_port")
 
@@ -23,12 +23,12 @@ def main(args=None) -> int:
     successful_ports: Queue[int] = Queue()
     for port in range(args.min_port, args.max_port + 1):
         # TODO
-        pass
+        port
 
     # Wait for all processes to finish
     for process in processes:
         # TODO
-        pass
+        process
 
     # Output results
     while not successful_ports.empty():

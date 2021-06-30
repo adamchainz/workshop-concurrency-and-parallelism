@@ -4,14 +4,13 @@ import argparse
 import time
 from threading import Thread
 
-
 COUNTER = 0
 
 
-def main(args=None) -> int:
+def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("target", type=int)
-    args = parser.parse_args(args)
+    args = parser.parse_args(argv)
 
     threads = [Thread(target=increment) for _ in range(args.target)]
     for thread in threads:

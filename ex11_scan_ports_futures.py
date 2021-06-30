@@ -6,13 +6,13 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from socket import AF_INET, SOCK_STREAM, socket
 
 
-def main(args=None) -> int:
+def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("host")
     parser.add_argument("min_port", type=int)
     parser.add_argument("max_port", type=int)
     parser.add_argument("--timeout", type=float, default=1.0)
-    args = parser.parse_args(args)
+    args = parser.parse_args(argv)
     if args.max_port < args.min_port:
         parser.error("max_port should be greater than or equal to min_port")
 

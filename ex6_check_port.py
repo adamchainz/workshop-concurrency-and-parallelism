@@ -4,12 +4,12 @@ import argparse
 from socket import AF_INET, SOCK_STREAM, socket
 
 
-def main(args=None) -> int:
+def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("host")
     parser.add_argument("port", type=int)
     parser.add_argument("--timeout", type=float, default=1.0)
-    args = parser.parse_args(args)
+    args = parser.parse_args(argv)
 
     is_open = check_port(args.host, args.port, args.timeout)
 
