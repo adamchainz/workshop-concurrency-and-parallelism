@@ -2,3 +2,4 @@ ipdb
 ipython
 pre-commit
 pytest
+trio
